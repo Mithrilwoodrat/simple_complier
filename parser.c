@@ -62,7 +62,7 @@ int program()
         return es;
     if(strcmp(token, "}"))
     {
-        printf("lack } !\n");
+        printf("lack } ! in program\n");
         return 2;
     }
     return 0;
@@ -121,7 +121,12 @@ int statement_list2()
     int es = 0;
     if (feof(fp))
     {
-        printf("lack } !\n");
+        printf("token : %s\n", token);
+        /* end of file */
+        if(strcmp(token,"}") == 0) {
+            return 0;
+        }
+        printf("lack } in statement_list2!\n");
         return 2;
     }
     if(strcmp(token,"}"))
@@ -133,6 +138,7 @@ int statement_list2()
     }
     return 0;
 }
+
 int statement()
 {
     int es;
